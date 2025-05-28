@@ -10,7 +10,11 @@ namespace PropExample
     {
         static void Main(string[] args)
         {
-            TestOver(3);
+            TestOver(3L);
+
+            // 생성자
+            //Product p = new Product();  // 기본 생성자(기정생성자)
+            Product p = new Product("아아", 1500);
         }
 
         // 오버로딩 주의점
