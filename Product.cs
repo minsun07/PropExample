@@ -15,7 +15,7 @@ namespace PropExample
         private static Product product;
 
 
-        // 팩토리 메서드 패턴
+        // 팩토리 메서드 패턴 + 싱글톤 패턴
         public static Product getInstance(string name, int price)
         {
             if(product == null)
