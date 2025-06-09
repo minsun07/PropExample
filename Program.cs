@@ -74,6 +74,13 @@ namespace PropExample
             testA.value = 10;
             testB.value = 20;
             Console.WriteLine(testA.value);  // 20
+
+            // 재귀함수를 이용한 피보나치수 구하기
+            Console.WriteLine(Fibonacci.Get(1));
+            Console.WriteLine(Fibonacci.Get(10));
+            Console.WriteLine(Fibonacci.GetM(1));
+            Console.WriteLine(Fibonacci.GetM(10));
+
         }
         static void Change(int input)
         {
@@ -98,5 +105,41 @@ namespace PropExample
         // 오버로딩
         //public static int TestOver(int input) { return 0; }
         public static bool TestOver(float input) { return true; }
+
+        public class Fibonacci
+        {
+            public static long Get(int i)
+            {
+                Console.WriteLine("Get(" + i + ")호출");
+                if (i <0) { return 0; }
+                if(i == 0 ) { return 1; }
+                if(i==1) { return 1; }
+                return Get(i - 2) + Get(i - 1);
+            }
+
+            private static Dictionary<int, long> memo = new Dictionary<int, long>();
+            public static long GetM(int i)
+            {
+                long value = 0;
+                if (memo.ContainsKey(i))
+                {
+                    value=  memo[i];
+                }
+                else
+                {
+                    if(i<0) { value = memo[i] = 0; }
+                    if (i == 1) { value = memo[i] = 1; }
+                    if (i == 2) { value = memo[i] = 1; }
+                    if (i > 2)
+                    {
+                        memo[i] = GetM(i - 2) + GetM(i - 1);
+                        return memo[i];
+                    }
+                }
+                return value;
+            }
+
+            
+        }
     }
 }
